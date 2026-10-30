@@ -24,7 +24,7 @@ A React website and admin dashboard backed by an Express API and MongoDB.
    MONGODB_URI=mongodb://127.0.0.1:27017/aurelia-estates
    JWT_SECRET=put-a-random-secret-of-at-least-32-characters-here
    JWT_EXPIRES_IN=8h
-   CLIENT_ORIGIN=http://localhost:5173
+   CLIENT_ORIGIN=http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com
    ADMIN_NAME=Site Administrator
    ADMIN_EMAIL=admin@example.com
    ADMIN_PASSWORD=use-a-password-of-at-least-12-characters
@@ -45,12 +45,22 @@ A React website and admin dashboard backed by an Express API and MongoDB.
    npm run dev
    ```
 
+   If port 5000 is already in use, choose a different port:
+
+   ```powershell
+   $env:PORT = '5001'
+   npm run dev
+   ```
+
 5. Start the website in a second terminal:
 
    ```powershell
    cd client
+   $env:VITE_API_PROXY_TARGET = 'http://localhost:5001'
    npm run dev
    ```
+
+   The frontend auto-detects a healthy API on ports 5000–5009 if no proxy target is configured. An explicit `VITE_API_PROXY_TARGET` takes precedence.
 
 ## Open the app
 
@@ -59,3 +69,14 @@ A React website and admin dashboard backed by an Express API and MongoDB.
 - API health check: http://localhost:5000/api/health
 
 Sign in using the `ADMIN_EMAIL` and `ADMIN_PASSWORD` values from `server/.env`.
+
+## Deployment
+
+The deployed API is available at:
+
+- API: https://real-estate-6q4b.onrender.com
+- Health check: https://real-estate-6q4b.onrender.com/api/health
+
+The deployed frontend uses `https://real-estate-6q4b.onrender.com/api` as its production default. To override it, set `VITE_API_URL` in the frontend host's build environment; it accepts either the API origin or the origin ending in `/api`. Local development uses the Vite proxy.
+
+In the Render backend environment, set `CLIENT_ORIGIN` to the deployed frontend origin (`https://real-estate-frontend-9fkk.onrender.com`). Separate multiple origins with commas, for example `http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com`. Keep `MONGODB_URI` and a random `JWT_SECRET` configured there. Production admin login uses secure cross-site cookies, so the frontend must use HTTPS and the origin must match `CLIENT_ORIGIN`.

@@ -6,10 +6,16 @@ import apiRoutes from './routes/index.js'
 import { errorHandler, notFound } from './middleware/errorHandler.js'
 
 const app = express()
-const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
-  .split(',')
+const defaultOrigins = [
+  'http://localhost:5173',
+  'https://real-estate-frontend-9fkk.onrender.com',
+]
+const configuredOrigins = (process.env.CLIENT_ORIGIN || '')
+  .split(/[,\s|]+/)
   .map((origin) => origin.trim())
   .filter(Boolean)
+const allowedOrigins = (configuredOrigins.length ? configuredOrigins : defaultOrigins)
+  .map((origin) => origin.replace(/\/+$/, ''))
 
 app.disable('x-powered-by')
 app.use(helmet())
