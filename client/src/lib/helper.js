@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const API_URL =
+const baseURL =
   import.meta.env.MODE === "development"
-    ? "http://localhost:5000"
-    : "https://real-estate-6q4b.onrender.com";
+    ? "/api"
+    : "https://real-estate-6q4b.onrender.com/api";
 
 const api = axios.create({
-  baseURL: `${API_URL}/api`,
+  baseURL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

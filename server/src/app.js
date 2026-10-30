@@ -14,8 +14,10 @@ const configuredOrigins = (process.env.CLIENT_ORIGIN || '')
   .split(/[,\s|]+/)
   .map((origin) => origin.trim())
   .filter(Boolean)
-const allowedOrigins = (configuredOrigins.length ? configuredOrigins : defaultOrigins)
-  .map((origin) => origin.replace(/\/+$/, ''))
+const allowedOrigins = [...new Set([
+  ...defaultOrigins.filter((origin) => origin.startsWith('http://localhost:')),
+  ...(configuredOrigins.length ? configuredOrigins : defaultOrigins),
+].map((origin) => origin.replace(/\/+$/, '')))]
 
 app.disable('x-powered-by')
 app.use(helmet())

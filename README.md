@@ -45,22 +45,14 @@ A React website and admin dashboard backed by an Express API and MongoDB.
    npm run dev
    ```
 
-   If port 5000 is already in use, choose a different port:
-
-   ```powershell
-   $env:PORT = '5001'
-   npm run dev
-   ```
-
 5. Start the website in a second terminal:
 
    ```powershell
    cd client
-   $env:VITE_API_PROXY_TARGET = 'http://localhost:5001'
    npm run dev
    ```
 
-   The frontend auto-detects a healthy API on ports 5000–5009 if no proxy target is configured. An explicit `VITE_API_PROXY_TARGET` takes precedence.
+   Local development uses port 5000 for the API and port 5173 for the frontend. If port 5000 is already occupied, stop the other process using it before starting the API.
 
 ## Open the app
 
@@ -77,6 +69,6 @@ The deployed API is available at:
 - API: https://real-estate-6q4b.onrender.com
 - Health check: https://real-estate-6q4b.onrender.com/api/health
 
-The frontend API service uses `http://localhost:5000/api` in local Vite development and `https://real-estate-6q4b.onrender.com/api` in production builds. Ensure the local API is running on port 5000 before using the local frontend.
+The frontend API service uses the Vite `/api` proxy to reach `http://localhost:5000/api` in local development and calls `https://real-estate-6q4b.onrender.com/api` in production builds.
 
 In the Render backend environment, set `CLIENT_ORIGIN` to the deployed frontend origin (`https://real-estate-frontend-9fkk.onrender.com`). Separate multiple origins with commas, for example `http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com`. Keep `MONGODB_URI` and a random `JWT_SECRET` configured there. Production admin login uses secure cross-site cookies, so the frontend must use HTTPS and the origin must match `CLIENT_ORIGIN`.
