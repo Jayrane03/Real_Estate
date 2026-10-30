@@ -22,6 +22,7 @@ export function AdminLogin() {
     } catch (err) {
       setError(
         err.response?.data?.message ||
+          err.message ||
           "Sign in failed. Check your credentials and try again.",
       );
     } finally {

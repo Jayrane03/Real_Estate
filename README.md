@@ -71,4 +71,6 @@ The deployed API is available at:
 
 The frontend API service uses the Vite `/api` proxy to reach `http://localhost:5002/api` in local development and calls `https://real-estate-6q4b.onrender.com/api` in production builds.
 
-In the Render backend environment, set `CLIENT_ORIGIN` to the deployed frontend origin (`https://real-estate-frontend-9fkk.onrender.com`). Separate multiple origins with commas, for example `http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com`. Keep `MONGODB_URI` and a random `JWT_SECRET` configured there. Production admin login uses secure cross-site cookies, so the frontend must use HTTPS and the origin must match `CLIENT_ORIGIN`.
+The local `server/.env` file is not deployed. In the Render API service's Environment settings, configure `MONGODB_URI`, a random `JWT_SECRET` (at least 32 characters), and `CLIENT_ORIGIN` with the exact deployed frontend origin (`https://real-estate-frontend-9fkk.onrender.com`). Separate multiple origins with commas, for example `http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com`. Render provides the service `PORT`.
+
+Admin authentication uses an HttpOnly, Secure, SameSite=None cookie; no JWT is stored in browser localStorage. The frontend and API must both use HTTPS in deployment. Redeploy the API and frontend after pulling changes.

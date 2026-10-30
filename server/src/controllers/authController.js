@@ -4,12 +4,10 @@ import User from '../models/User.js'
 import ActivityLog from '../models/ActivityLog.js'
 import { asyncHandler } from '../utils/asyncHandler.js'
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 const cookieOptions = () => ({
   httpOnly: true,
-  secure: isProduction,
-  sameSite: isProduction ? 'none' : 'lax',
+  secure: true,
+  sameSite: 'none',
   path: '/',
   maxAge: 8 * 60 * 60 * 1000,
 })

@@ -13,8 +13,13 @@ export function AdminShell({ user }) {
   const navigate = useNavigate();
   const location = useLocation();
   const logout = async () => {
-    await api.post("/auth/logout").catch(() => {});
-    navigate("/admin/sign-in");
+    try {
+      await api.post("/auth/logout");
+    } catch (error) {
+      console.error("Sign-out request failed:", error);
+    } finally {
+      navigate("/admin/sign-in");
+    }
   };
   const nav = [
     {
