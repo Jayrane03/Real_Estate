@@ -108,7 +108,7 @@ export function PropertyEditor({ property, onClose, onSaved }) {
                   type="number"
                   min="1"
                   {...form.register("price")}
-                  placeholder="185000000"
+                  placeholder="185002000"
                 />
               </Field>
               <Field label="Residence type">

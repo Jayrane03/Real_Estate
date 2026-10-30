@@ -6,7 +6,7 @@ dotenv.config({ path: fileURLToPath(new URL('../.env', import.meta.url)) })
 const { default: app } = await import('./app.js')
 const { connectDatabase } = await import('./config/database.js')
 
-const port = Number(process.env.PORT) || 5000
+const port = Number(process.env.PORT) || 5002
 
 const startServer = () => new Promise((resolve, reject) => {
   const server = app.listen(port, () => {

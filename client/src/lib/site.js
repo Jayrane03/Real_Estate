@@ -7,7 +7,7 @@ export const propertyFallbacks = [
   {
     title: "The Aurelia Sky Residence",
     neighborhood: "Worli Sea Face",
-    price: 185000000,
+    price: 185002000,
     beds: 5,
     baths: 5,
     area: 6420,

@@ -10,7 +10,7 @@ Express and MongoDB REST API used by the React client.
 4. Create the first admin account with `npm --prefix server run seed:admin`.
 5. Start the API with `npm --prefix server run dev` and the client with `npm --prefix client run dev` in separate terminals.
 
-The frontend API service uses the Vite `/api` proxy to reach `http://localhost:5000/api` during local development. Production builds call `https://real-estate-6q4b.onrender.com/api`. Configure `CLIENT_ORIGIN` on the API to allow the deployed frontend origin.
+The frontend API service uses the Vite `/api` proxy to reach `http://localhost:5002/api` during local development. Production builds call `https://real-estate-6q4b.onrender.com/api`. Configure `CLIENT_ORIGIN` on the API to allow the deployed frontend origin.
 
 ## API layout
 
