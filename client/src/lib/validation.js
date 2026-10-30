@@ -1,0 +1,142 @@
+import { z } from "zod";
+
+export const inquirySchema = z.object({
+  name: z.string().trim().min(2, "Please enter your name."),
+  email: z.string().trim().email("Enter a valid email address."),
+  phone: z.string().trim().max(40).optional(),
+  message: z.string().trim().min(8, "Please add a short note.").max(2000),
+});
+
+export const propertySchema = z.object({
+  title: z.string().trim().min(4, "Enter a property name.").max(120),
+  price: z.coerce.number().min(1, "Enter a valid price."),
+  address: z.string().trim().min(5, "Enter the project address."),
+  neighborhood: z.string().trim().optional(),
+  beds: z.coerce.number().min(0),
+  baths: z.coerce.number().min(0),
+  area: z.coerce.number().min(0),
+  type: z.string(),
+  status: z.enum(["draft", "published"]),
+  excerpt: z.string().max(240).optional(),
+  description: z.string().optional(),
+  coverImage: z
+    .string()
+    .url("Enter a valid image URL.")
+    .or(z.literal(""))
+    .optional(),
+  galleryText: z.string().optional(),
+  amenitiesText: z.string().optional(),
+  floorPlans: z.array(z.object({
+    name: z.string().trim().min(1, "Enter a floor plan name.").max(100),
+    beds: z.coerce.number().min(0),
+    baths: z.coerce.number().min(0),
+    area: z.coerce.number().min(0),
+    image: z.string().url().or(z.literal("")),
+  })).max(20),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+});
+
+export const contentSchema = z.object({
+  brandName: z.string().trim().min(2).max(100),
+  brandDescriptor: z.string().trim().min(2).max(100),
+  headline: z.string().trim().min(5).max(180),
+  subheadline: z.string().trim().min(5).max(300),
+  heroImage: z.string().url().or(z.literal("")),
+  contactEmail: z.string().trim().email(),
+  phone: z.string().trim().min(5).max(40),
+  notice: z.object({
+    location: z.string().trim().min(2).max(160),
+    registration: z.string().trim().min(2).max(120),
+    conciergeLabel: z.string().trim().min(2).max(60),
+  }),
+  navigation: z.object({
+    residences: z.string().trim().min(2).max(60),
+    address: z.string().trim().min(2).max(60),
+    amenities: z.string().trim().min(2).max(60),
+    gallery: z.string().trim().min(2).max(60),
+    enquire: z.string().trim().min(2).max(60),
+  }),
+  hero: z.object({
+    eyebrow: z.string().trim().min(2).max(100),
+    title: z.string().trim().min(2).max(100),
+    highlight: z.string().trim().min(2).max(100),
+    description: z.string().trim().min(2).max(240),
+    secondaryLine: z.string().trim().min(2).max(240),
+    cta: z.string().trim().min(2).max(100),
+    coordinates: z.string().trim().min(2).max(80),
+    location: z.string().trim().min(2).max(100),
+    counter: z.string().trim().min(2).max(40),
+    collection: z.string().trim().min(2).max(100),
+    scrollLabel: z.string().trim().min(2).max(100),
+  }),
+  story: z.object({
+    index: z.string().trim().min(2).max(100),
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(120),
+    highlight: z.string().trim().min(2).max(120),
+    body: z.string().trim().min(10).max(1200),
+    addressLabel: z.string().trim().min(2).max(100),
+    address: z.string().trim().min(2).max(300),
+    cta: z.string().trim().min(2).max(120),
+  }),
+  residences: z.object({
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(100),
+    highlight: z.string().trim().min(2).max(100),
+    searchPlaceholder: z.string().trim().min(2).max(100),
+    cta: z.string().trim().min(2).max(120),
+  }),
+  propertyDetail: z.object({
+    backLabel: z.string().trim().min(2).max(80),
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(120),
+    highlight: z.string().trim().min(2).max(120),
+    amenitiesLabel: z.string().trim().min(2).max(100),
+    floorPlansLabel: z.string().trim().min(2).max(100),
+    asideEyebrow: z.string().trim().min(2).max(100),
+    asideHeading: z.string().trim().min(2).max(120),
+    asideHighlight: z.string().trim().min(2).max(120),
+    asideDescription: z.string().trim().min(10).max(300),
+    asideCta: z.string().trim().min(2).max(120),
+    startingAtLabel: z.string().trim().min(2).max(60),
+  }),
+  gallery: z.object({
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(120),
+    highlight: z.string().trim().min(2).max(120),
+    image: z.string().url().or(z.literal("")),
+    linkLabel: z.string().trim().min(2).max(100),
+  }),
+  amenities: z.object({
+    index: z.string().trim().min(2).max(100),
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(120),
+    highlight: z.string().trim().min(2).max(120),
+    items: z.array(z.object({
+      number: z.string().trim().min(1).max(10),
+      name: z.string().trim().min(2).max(100),
+    })).min(1).max(12),
+  }),
+  contact: z.object({
+    eyebrow: z.string().trim().min(2).max(100),
+    heading: z.string().trim().min(2).max(120),
+    highlight: z.string().trim().min(2).max(120),
+    description: z.string().trim().min(10).max(500),
+    formEyebrow: z.string().trim().min(2).max(100),
+    formHeading: z.string().trim().min(2).max(120),
+    submitLabel: z.string().trim().min(2).max(120),
+    successHeading: z.string().trim().min(2).max(120),
+    successMessage: z.string().trim().min(10).max(300),
+    privacyNote: z.string().trim().min(2).max(160),
+  }),
+  footer: z.object({
+    address: z.string().trim().min(2).max(200),
+    registration: z.string().trim().min(2).max(120),
+  }),
+  seo: z.object({
+    title: z.string().trim().min(5).max(160),
+    description: z.string().trim().min(10).max(320),
+    keywords: z.string().trim().max(500).optional().default(""),
+  }),
+});

@@ -1,0 +1,58 @@
+.residence-tools {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.residence-slider-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.residence-slider-controls .icon-button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(112, 91, 64, 0.24);
+}
+
+.residence-slider-controls .icon-button:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.residences-section .residence-grid {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.residences-section .residence-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.residences-section .residence-grid > .property-card {
+  flex: 0 0 calc((100% - 52px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .residences-section .residence-grid > .property-card {
+    flex-basis: calc((100% - 26px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .residence-tools {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .residences-section .residence-grid > .property-card {
+    flex-basis: 86%;
+  }
+}
