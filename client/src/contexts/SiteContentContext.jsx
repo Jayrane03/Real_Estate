@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import api from "../lib/api.js";
+import api from "../lib/helper.js";
 import { cover } from "../lib/site.js";
 
 export const DEFAULT_SITE_CONTENT = {

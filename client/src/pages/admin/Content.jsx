@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Check, Eye, FileText, Image, ListPlus, MapPin, Phone, Search, ShieldCheck, Trash2, X } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { Button, Field, PageTitle } from "../../components/Common.jsx";
 import { DEFAULT_SITE_CONTENT, useSiteContent } from "../../contexts/SiteContentContext.jsx";
 import { contentSchema } from "../../lib/validation.js";

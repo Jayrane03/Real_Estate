@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { PublicFooter, PublicHeader } from "../../components/Common.jsx";
 import { cover, propertyFallbacks } from "../../lib/site.js";
 import { formatPrice } from "../../lib/format.js";

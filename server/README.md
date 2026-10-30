@@ -10,7 +10,7 @@ Express and MongoDB REST API used by the React client.
 4. Create the first admin account with `npm --prefix server run seed:admin`.
 5. Start the API with `npm --prefix server run dev` and the client with `npm --prefix client run dev` in separate terminals.
 
-The Vite development server proxies `/api` requests to `http://localhost:5000`. For a deployed frontend, set `VITE_API_URL` to the API base URL (for example, `https://api.example.com/api`) and configure `CLIENT_ORIGIN` on the API.
+The frontend API service calls `http://localhost:5000/api` during local Vite development and `https://real-estate-6q4b.onrender.com/api` in production builds. Configure `CLIENT_ORIGIN` on the API to allow the deployed frontend origin.
 
 ## API layout
 

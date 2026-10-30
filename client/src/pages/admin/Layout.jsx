@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Activity, Building2, Clock3, FileText, LayoutDashboard, LogOut, Menu, MessageSquareText, SquareArrowOutUpRight } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { Dashboard } from "./Dashboard.jsx";
 import { PropertiesPage } from "./Properties.jsx";
 import { InquiriesPage } from "./Inquiries.jsx";

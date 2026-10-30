@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Bath, BedDouble, ChevronRight, MapPin, Menu, Phone, ShieldCheck, X } from "lucide-react";
-import api from "../lib/api.js";
+import api from "../lib/helper.js";
 import { cover, propertyFallbacks } from "../lib/site.js";
 import { formatPrice } from "../lib/format.js";
 import { useSiteContent } from "../contexts/SiteContentContext.jsx";

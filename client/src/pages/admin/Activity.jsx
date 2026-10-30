@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Activity, ShieldCheck } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { PageTitle } from "../../components/Common.jsx";
 import { formatDate, formatRelative } from "../../lib/format.js";
 import { usePageMeta } from "../../hooks/usePageMeta.js";

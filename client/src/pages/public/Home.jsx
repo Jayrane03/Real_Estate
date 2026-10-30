@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ArrowDownRight, ArrowRight, Check, ChevronLeft, ChevronRight, Mail, Phone, Search, ShieldCheck } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { Button, Field, PropertyCard, PublicFooter, PublicHeader } from "../../components/Common.jsx";
 import { cover, propertyFallbacks } from "../../lib/site.js";
 import { inquirySchema } from "../../lib/validation.js";

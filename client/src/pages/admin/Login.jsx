@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
-import api from "../../lib/api.js";
+import api from "../../lib/helper.js";
 import { Button, Field } from "../../components/Common.jsx";
 import { cover } from "../../lib/site.js";
 import { usePageMeta } from "../../hooks/usePageMeta.js";

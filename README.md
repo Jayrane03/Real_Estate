@@ -77,6 +77,6 @@ The deployed API is available at:
 - API: https://real-estate-6q4b.onrender.com
 - Health check: https://real-estate-6q4b.onrender.com/api/health
 
-The deployed frontend uses `https://real-estate-6q4b.onrender.com/api` as its production default. To override it, set `VITE_API_URL` in the frontend host's build environment; it accepts either the API origin or the origin ending in `/api`. Local development uses the Vite proxy.
+The frontend API service uses `http://localhost:5000/api` in local Vite development and `https://real-estate-6q4b.onrender.com/api` in production builds. Ensure the local API is running on port 5000 before using the local frontend.
 
 In the Render backend environment, set `CLIENT_ORIGIN` to the deployed frontend origin (`https://real-estate-frontend-9fkk.onrender.com`). Separate multiple origins with commas, for example `http://localhost:5173,https://real-estate-frontend-9fkk.onrender.com`. Keep `MONGODB_URI` and a random `JWT_SECRET` configured there. Production admin login uses secure cross-site cookies, so the frontend must use HTTPS and the origin must match `CLIENT_ORIGIN`.
